@@ -22,8 +22,6 @@ def chance_above(floor, ceiling, goal):
 
     if ceiling == 0:
         chance = 0
-    elif goal == 0:
-        chance = 1
     elif goal >= ceiling:
         chance = 0
     elif goal < floor:
