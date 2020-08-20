@@ -13,24 +13,24 @@ def at_least_one_hit(to_hit, max_shots):
     return float(np.complex128(chance))
 
 
-def chance_above(floor, ceiling, gateway):
+def chance_above(floor, ceiling, goal):
     """
-    Returns the chance to get a value above the gateway.
+    Returns the chance to get a value above the goal.
 
     The values should follow a homogeneous distribution. Each number should have the same chance of being selected.
     """
 
     if ceiling == 0:
         chance = 0
-    elif gateway == 0:
+    elif goal == 0:
         chance = 1
-    elif gateway >= ceiling:
+    elif goal >= ceiling:
         chance = 0
-    elif gateway < floor:
+    elif goal < floor:
         chance = 1
     else:
         # Success is the inverse of the chance to fail
-        chance = gateway / Decimal(ceiling - floor + 1)
+        chance = goal / Decimal(ceiling - floor + 1)
         chance = 1 - Decimal(chance)
 
     return chance
