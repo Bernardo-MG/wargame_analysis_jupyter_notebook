@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import unittest
+import math
 
 from scripts.weapon import max_shots
 
@@ -124,3 +125,33 @@ class TestPercentileTripleShot(unittest.TestCase):
         shots = max_shots(100, 50, 15, 3, 3)
 
         self.assertEqual(3, shots)
+
+
+class TestPercentileSingleShotUnlimitedAmmo(unittest.TestCase):
+    """
+    Tests the max shots with percentile values and burst of 1, and unlimited ammo.
+    """
+
+    def test_full_turn(self):
+        """
+        Takes a full turn to shoot.
+        """
+        shots = max_shots(100, 100, 15, 1, math.inf)
+
+        self.assertEqual(1, shots)
+
+    def test_half_turn_enough_ammo(self):
+        """
+        Takes half a turn to shoot and has enough ammo for all the shots.
+        """
+        shots = max_shots(100, 50, 15, 1, math.inf)
+
+        self.assertEqual(2, shots)
+
+    def test_half_turn_more_than_enough_ammo(self):
+        """
+        Takes half a turn to shoot and has enough ammo to keep shooting.
+        """
+        shots = max_shots(100, 50, 15, 1, math.inf)
+
+        self.assertEqual(2, shots)
