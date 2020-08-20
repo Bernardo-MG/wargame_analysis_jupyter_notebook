@@ -6,3 +6,6 @@ bernardomg.version-extractor==1.0.3
 
 # Testing
 tox==3.14.5
+
+# Maths
+numpy==1.19.1

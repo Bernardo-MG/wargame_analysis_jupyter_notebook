@@ -1,4 +1,5 @@
 import numpy as np
+from decimal import Decimal
 
 
 def at_least_one_hit(to_hit, max_shots):
@@ -28,18 +29,8 @@ def chance_above(floor, ceiling, gateway):
     elif gateway < floor:
         chance = 1
     else:
-        # To ease handling the minimal damage we will normalize values
-        max_norm = ceiling - floor
-        gateway_norm = gateway - floor
-
-        # The damage required to actually damage the target with 1 point
-        lowest_valid = gateway_norm + 1
-        # The number of damage values which can damage the target
-        damage_range = max_norm - lowest_valid
-        # Proportion of the full damage spectrum which can actually damage the target
-        chance = damage_range / max_norm
-
         # Success is the inverse of the chance to fail
-        # chance = 1- (gateway_norm + 1) / max_norm
+        chance = gateway / Decimal(ceiling - floor + 1)
+        chance = 1 - Decimal(chance)
 
     return chance
