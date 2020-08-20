@@ -18,7 +18,7 @@ This is prepared for easing the generation of deployment files.
 __license__ = 'MIT'
 
 # Source package
-_source_package = 'dice_notation/'
+_source_package = 'scripts/'
 
 # Test requirements
 _tests_require = ['tox']
