@@ -2,15 +2,14 @@ import numpy as np
 from decimal import Decimal
 
 
-def at_least_one_hit(to_hit, max_shots):
+def at_least_one(chance, attempts):
     """
-    Returns the chance to get at least one hit if the turns is spent shooting.
+    Returns the chance to get at least one success on a number of attempts.
     """
-    accuracy = to_hit
-    if accuracy > 1:
-        accuracy = 1
-    chance = 1 - (1 - accuracy) ** max_shots
-    return float(np.complex128(chance))
+    if chance > 1:
+        chance = 1
+    
+    return Decimal(1 - (1 - chance) ** attempts)
 
 
 def roll_chance(floor, ceiling, goal, above=True, equal=False):
