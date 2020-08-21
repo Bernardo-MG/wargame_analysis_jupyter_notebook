@@ -3,7 +3,7 @@
 import unittest
 from decimal import Decimal
 
-from scripts.probability import roll_chance
+from scripts.probability import success_chance
 
 """
 Max shots script tests.
@@ -19,19 +19,19 @@ class TestMinValuesAbove(unittest.TestCase):
     """
 
     def test_zeros(self):
-        chance = roll_chance(0, 0, 0, above=True, equal=False)
+        chance = success_chance(0, 0, 0, above=True, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_min(self):
 
-        chance = roll_chance(1, 1, 1, above=True, equal=False)
+        chance = success_chance(1, 1, 1, above=True, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_zero_goal(self):
 
-        chance = roll_chance(1, 1, 0, above=True, equal=False)
+        chance = success_chance(1, 1, 0, above=True, equal=False)
 
         self.assertEqual(1, chance)
 
@@ -43,19 +43,19 @@ class TestMinValuesAboveEqual(unittest.TestCase):
 
     def test_zeros(self):
 
-        chance = roll_chance(0, 0, 0, above=True, equal=True)
+        chance = success_chance(0, 0, 0, above=True, equal=True)
 
         self.assertEqual(1, chance)
 
     def test_min(self):
 
-        chance = roll_chance(1, 1, 1, above=True, equal=True)
+        chance = success_chance(1, 1, 1, above=True, equal=True)
 
         self.assertEqual(1, chance)
 
     def test_zero_goal(self):
 
-        chance = roll_chance(1, 1, 0, above=True, equal=True)
+        chance = success_chance(1, 1, 0, above=True, equal=True)
 
         self.assertEqual(1, chance)
 
@@ -66,19 +66,19 @@ class TestMinValuesBelow(unittest.TestCase):
     """
 
     def test_zeros(self):
-        chance = roll_chance(0, 0, 0, above=False, equal=False)
+        chance = success_chance(0, 0, 0, above=False, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_min(self):
 
-        chance = roll_chance(1, 1, 1, above=False, equal=False)
+        chance = success_chance(1, 1, 1, above=False, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_zero_goal(self):
 
-        chance = roll_chance(1, 1, 0, above=False, equal=False)
+        chance = success_chance(1, 1, 0, above=False, equal=False)
 
         self.assertEqual(0, chance)
 
@@ -89,19 +89,19 @@ class TestMinValuesBelowEqual(unittest.TestCase):
     """
 
     def test_zeros(self):
-        chance = roll_chance(0, 0, 0, above=False, equal=True)
+        chance = success_chance(0, 0, 0, above=False, equal=True)
 
         self.assertEqual(Decimal('1'), chance)
 
     def test_min(self):
 
-        chance = roll_chance(1, 1, 1, above=False, equal=True)
+        chance = success_chance(1, 1, 1, above=False, equal=True)
 
         self.assertEqual(Decimal('1'), chance)
 
     def test_zero_goal(self):
 
-        chance = roll_chance(1, 1, 0, above=False, equal=True)
+        chance = success_chance(1, 1, 0, above=False, equal=True)
 
         self.assertEqual(0, chance)
 
@@ -113,13 +113,13 @@ class TestNegValuesAbove(unittest.TestCase):
 
     def test_negs(self):
 
-        chance = roll_chance(-1, -1, -1, above=True, equal=False)
+        chance = success_chance(-1, -1, -1, above=True, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_neg_goal(self):
 
-        chance = roll_chance(1, 10, -1, above=True, equal=False)
+        chance = success_chance(1, 10, -1, above=True, equal=False)
 
         self.assertEqual(1, chance)
 
@@ -131,13 +131,13 @@ class TestNegValuesAboveEqual(unittest.TestCase):
 
     def test_negs(self):
 
-        chance = roll_chance(-1, -1, -1, above=True, equal=True)
+        chance = success_chance(-1, -1, -1, above=True, equal=True)
 
         self.assertEqual(Decimal('1'), chance)
 
     def test_neg_goal(self):
 
-        chance = roll_chance(1, 10, -1, above=True, equal=True)
+        chance = success_chance(1, 10, -1, above=True, equal=True)
 
         self.assertEqual(1, chance)
 
@@ -149,13 +149,13 @@ class TestNegValuesBelow(unittest.TestCase):
 
     def test_negs(self):
 
-        chance = roll_chance(-1, -1, -1, above=False, equal=False)
+        chance = success_chance(-1, -1, -1, above=False, equal=False)
 
         self.assertEqual(0, chance)
 
     def test_neg_goal(self):
 
-        chance = roll_chance(1, 10, -1, above=False, equal=False)
+        chance = success_chance(1, 10, -1, above=False, equal=False)
 
         self.assertEqual(0, chance)
 
@@ -167,12 +167,12 @@ class TestNegValuesBelowEqual(unittest.TestCase):
 
     def test_negs(self):
 
-        chance = roll_chance(-1, -1, -1, above=False, equal=True)
+        chance = success_chance(-1, -1, -1, above=False, equal=True)
 
         self.assertEqual(Decimal('1'), chance)
 
     def test_neg_goal(self):
 
-        chance = roll_chance(1, 10, -1, above=False, equal=True)
+        chance = success_chance(1, 10, -1, above=False, equal=True)
 
         self.assertEqual(0, chance)

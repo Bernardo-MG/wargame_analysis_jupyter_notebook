@@ -1,4 +1,3 @@
-import numpy as np
 from decimal import Decimal
 
 
@@ -8,11 +7,11 @@ def at_least_one(chance, attempts):
     """
     if chance > 1:
         chance = 1
-    
+
     return Decimal(1 - (1 - chance) ** attempts)
 
 
-def roll_chance(floor, ceiling, goal, above=True, equal=False):
+def success_chance(floor, ceiling, goal, above=True, equal=False):
     """
     Returns the chance to get a value above the goal. This is the same as rolling a dice and trying to get above a
     value.
@@ -39,7 +38,7 @@ def roll_chance(floor, ceiling, goal, above=True, equal=False):
             chance = 0
     else:
         if not above:
-            chance = 1 - roll_chance(floor, ceiling, goal, not above, not equal)
+            chance = 1 - success_chance(floor, ceiling, goal, not above, not equal)
         else:
             if equal:
                 chance = (goal - 1) / Decimal(ceiling - floor + 1)
