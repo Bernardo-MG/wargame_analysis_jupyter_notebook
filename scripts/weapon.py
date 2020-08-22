@@ -1,40 +1,6 @@
 import math
 
 
-def max_shots(turn_tus, weapon_tus, reload_tu, burst, ammo):
-    """
-    Returns the max number of shots a weapon can achieve in a turn.
-
-    Takes into consideration that the weapon may have to reload.
-    """
-    if ammo <= 0:
-        shots = 0
-    elif weapon_tus <= 0:
-        shots = 0
-    else:
-        fire_actions = int(turn_tus / weapon_tus)
-        shots = fire_actions * burst
-
-        if shots > ammo:
-            # Shoots above capacity. Has to reload
-
-            # We need to check the number of times the weapon has to reload
-            reload_shots = fire_actions
-            if reload_shots > 1:
-                # Adds cost to reload between shots
-                reload_cost = (reload_shots - 1) * reload_tu
-                # The cost will be averaged to each shot
-                reload_cost = reload_cost / reload_shots
-            else:
-                # A single shot. No reload needed
-                reload_cost = 0
-            cost = weapon_tus + reload_cost
-            fire_actions = int(turn_tus / cost)
-            shots = fire_actions * burst
-
-    return shots
-
-
 def penetrating_damage(base_damage, armor):
     """
     Returns the damage after applying armor.
