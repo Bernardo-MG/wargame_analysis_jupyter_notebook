@@ -1,0 +1,12 @@
+# Miscellany files
+include LICENSE
+include README.rst
+include tox.ini
+include requirements.txt
+
+# Tests
+recursive-exclude tests *.pyc
+recursive-exclude tests *.pyo
+
+# Notebooks
+recursive-exclude *.ipynb
