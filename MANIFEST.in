@@ -9,4 +9,4 @@ recursive-exclude tests *.pyc
 recursive-exclude tests *.pyo
 
 # Notebooks
-recursive-exclude * *.ipynb
+exclude * *.ipynb
