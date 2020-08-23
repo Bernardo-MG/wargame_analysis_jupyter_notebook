@@ -90,17 +90,17 @@ class TestZeroToTenBelowNotEqual(unittest.TestCase):
 
         self.assertEqual(1, chance)
 
+    def test_goal_below_min(self):
+
+        chance = success_chance(0, 10, -1, above=False, equal=False)
+
+        self.assertEqual(0, chance)
+
 
 class TestOneToTenBelowNotEqual(unittest.TestCase):
     """
     Tests the chance to go above with the range [1,10].
     """
-
-    def test_goal_0(self):
-
-        chance = success_chance(1, 10, 0, above=False, equal=False)
-
-        self.assertEqual(0, chance)
 
     def test_goal_1(self):
 
@@ -167,6 +167,12 @@ class TestOneToTenBelowNotEqual(unittest.TestCase):
         chance = success_chance(1, 10, 20, above=False, equal=False)
 
         self.assertEqual(1, chance)
+
+    def test_goal_below_min(self):
+
+        chance = success_chance(1, 10, 0, above=False, equal=False)
+
+        self.assertEqual(0, chance)
 
 
 class TestTenToOneHundredBelowNotEqual(unittest.TestCase):
