@@ -32,3 +32,22 @@ def max_actions(points, action_cost, recover_cost, limit):
             actions = fire_actions
 
     return actions
+
+
+def hits_to_kill(damage, health):
+    """
+    Returns the number of hits it takes to kill the target.
+    """
+    if health == 0:
+        hits = 0
+    elif damage > 0:
+        hits = health / damage
+    else:
+        hits = math.inf
+
+    if hits == math.inf:
+        hits = hits
+    else:
+        hits = math.ceil(hits)
+
+    return hits
