@@ -1,5 +1,4 @@
-from decimal import Decimal
-from scipy.stats import binom, randint
+from scipy.stats import binom
 
 
 def at_least_one(chance, attempts):
