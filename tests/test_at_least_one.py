@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from decimal import Decimal
 
 from scripts.probability import at_least_one
 
@@ -56,17 +55,22 @@ class TestSingleAttempt(unittest.TestCase):
     """
 
     def test_10percent(self):
-        chance = at_least_one(Decimal("0.1"), 1)
+        chance = at_least_one(0.1, 1)
 
-        self.assertEqual(Decimal("0.1"), chance)
+        self.assertEqual(0.09999999999999998, chance)
 
     def test_50percent(self):
-        chance = at_least_one(Decimal("0.5"), 1)
+        chance = at_least_one(0.5, 1)
 
-        self.assertEqual(Decimal("0.5"), chance)
+        self.assertEqual(0.5, chance)
+
+    def test_60percent(self):
+        chance = at_least_one(0.6, 1)
+
+        self.assertEqual(0.6, chance)
 
     def test_100percent(self):
-        chance = at_least_one(Decimal("1"), 1)
+        chance = at_least_one(1, 1)
 
         self.assertEqual(1, chance)
 
@@ -77,16 +81,16 @@ class TestThreeAttempt(unittest.TestCase):
     """
 
     def test_10percent(self):
-        chance = at_least_one(Decimal("0.1"), 3)
+        chance = at_least_one(0.1, 3)
 
-        self.assertEqual(Decimal("0.271"), chance)
+        self.assertEqual(0.2709999999999999, chance)
 
     def test_50percent(self):
-        chance = at_least_one(Decimal("0.5"), 3)
+        chance = at_least_one(0.5, 3)
 
-        self.assertEqual(Decimal("0.875"), chance)
+        self.assertEqual(0.875, chance)
 
     def test_100percent(self):
-        chance = at_least_one(Decimal("1"), 3)
+        chance = at_least_one(1, 3)
 
         self.assertEqual(1, chance)

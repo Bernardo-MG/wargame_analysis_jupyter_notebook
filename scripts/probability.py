@@ -1,4 +1,5 @@
 from decimal import Decimal
+from scipy.stats import binom
 
 
 def at_least_one(chance, attempts):
@@ -8,7 +9,7 @@ def at_least_one(chance, attempts):
     if chance > 1:
         chance = 1
 
-    return Decimal(1 - (1 - chance) ** attempts)
+    return binom.cdf(attempts, attempts, chance) - binom.cdf(0, attempts, chance)
 
 
 def success_chance(floor, ceiling, goal, above=True, equal=False):
