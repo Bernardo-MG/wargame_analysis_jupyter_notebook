@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from decimal import Decimal
 
 from scripts.probability import roll_success_range
 
